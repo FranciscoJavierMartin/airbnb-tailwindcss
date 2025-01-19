@@ -24,5 +24,8 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
+  image: {
+    dir: 'assets/images',
+  },
 });
