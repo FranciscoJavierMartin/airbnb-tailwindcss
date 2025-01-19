@@ -23,11 +23,12 @@ export default defineNuxtConfig({
         },
       ],
     },
-    baseURL: '/airbnb-tailwindcss/about/',
-    buildAssetsDir: 'assets',
+    // baseURL: '/airbnb-tailwindcss/about/',
+    // buildAssetsDir: 'assets',
   },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
   image: {
     dir: 'assets/images',
+    provider: 'ipx',
   },
 });
