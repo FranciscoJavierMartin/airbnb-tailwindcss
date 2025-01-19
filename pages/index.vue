@@ -1,12 +1,7 @@
 <template>
-  <div>
-    <h1>Hello</h1>
-    <NuxtImg :src="images[0]" />
-  </div>
+  <Header />
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-
-const images = ref<any[]>(['search/africa.jpg']);
+import Header from '@/components/header/header.vue';
 </script>
