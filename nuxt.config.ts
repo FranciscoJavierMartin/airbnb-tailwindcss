@@ -23,6 +23,8 @@ export default defineNuxtConfig({
         },
       ],
     },
+    baseURL: '/airbnb-tailwindcss/about/',
+    buildAssetsDir: 'assets',
   },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
   image: {
