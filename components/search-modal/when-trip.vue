@@ -1,31 +1,45 @@
 <template>
-  <details class="overflow-hidden search-card">
+  <details class="overflow-hidden search-card" open>
     <summary class="text-xl font-extrabold">When's your trip?</summary>
     <!-- Tab selector -->
     <div
       class="grid items-center grid-cols-3 p-1 my-4 text-sm font-bold text-center bg-gray-200 rounded-full"
     >
-      <div
-        class="rounded-full border border-[#dddddd] bg-white py-1.5 text-center text-sm"
+      <button
+        class="tab"
+        :class="{ selected: tabSelected === 0 }"
+        @click="tabSelected = 0"
       >
         Dates
-      </div>
-      <div class="text-center">Months</div>
-      <div class="text-center">Flexible</div>
+      </button>
+      <button
+        class="tab"
+        :class="{ selected: tabSelected === 1 }"
+        @click="tabSelected = 1"
+      >
+        Months
+      </button>
+      <button
+        class="tab"
+        :class="{ selected: tabSelected === 2 }"
+        @click="tabSelected = 2"
+      >
+        Flexible
+      </button>
     </div>
 
     <!-- Tabs -->
     <div>
       <!-- Dates -->
-      <!-- <div></div> -->
+      <div v-if="tabSelected === 0"></div>
 
       <!-- Months -->
-      <!-- <div></div> -->
+      <div v-if="tabSelected === 1"></div>
 
       <!-- Flexible -->
-      <div class="">
+      <div v-if="tabSelected === 2">
         <div class="pt-3 border-t border-gray-200">
-          <div class="mb-2 font-semibold">Stay for a {{ stayForA }} ?</div>
+          <div class="mb-2 font-semibold">Stay for a {{ stayForA }}?</div>
           <div
             class="grid items-center justify-between grid-cols-3 gap-4 text-sm"
           >
@@ -80,6 +94,7 @@
 
 <script setup lang="ts">
 import Calendar from '@/components/icons/calendar.vue';
+const tabSelected = ref<number>(0);
 const stayForA = ref<string>('...');
 
 const months = [
@@ -99,6 +114,14 @@ const months = [
 </script>
 
 <style lang="postcss">
+.tab {
+  @apply text-center;
+
+  &.selected {
+    @apply rounded-full border border-[#dddddd] bg-white py-1.5 text-sm;
+  }
+}
+
 .selected-stay {
   @apply rounded-full border border-gray-300 px-3 py-1.5;
 
