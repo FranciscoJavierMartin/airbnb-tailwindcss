@@ -53,19 +53,25 @@
               <div class="mb-2 font-semibold">Stay for a {{ stayForA }} ?</div>
               <div class="flex items-center justify-between gap-4 text-sm">
                 <button
-                  class="rounded-full border border-gray-300 px-3 py-1.5"
+                  class="selected-stay"
+                  :class="{ active: stayForA === 'weekend' }"
+                  :disabled="stayForA === 'weekend'"
                   @click="stayForA = 'weekend'"
                 >
                   Weekend
                 </button>
                 <button
-                  class="rounded-full border-2 border-gray-900 bg-gray-200 px-3 py-1.5"
+                  class="selected-stay"
+                  :class="{ active: stayForA === 'week' }"
+                  :disabled="stayForA === 'week'"
                   @click="stayForA = 'week'"
                 >
                   Week
                 </button>
                 <button
-                  class="rounded-full border border-gray-300 px-3 py-1.5"
+                  class="selected-stay"
+                  :class="{ active: stayForA === 'month' }"
+                  :disabled="stayForA === 'month'"
                   @click="stayForA = 'month'"
                 >
                   Month
@@ -131,3 +137,13 @@ const months = [
   'December',
 ];
 </script>
+
+<style lang="postcss">
+.selected-stay {
+  @apply rounded-full border border-gray-300 px-3 py-1.5;
+
+  &.active {
+    @apply border-2 border-gray-900 bg-gray-200;
+  }
+}
+</style>
