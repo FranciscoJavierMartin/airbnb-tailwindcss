@@ -49,7 +49,7 @@
 
           <!-- Flexible -->
           <div class="">
-            <div class="py-2 border-gray-200 border-y">
+            <div class="pt-3 border-t border-gray-200">
               <div class="mb-2 font-semibold">Stay for a ... ?</div>
               <div class="flex items-center justify-between gap-4 text-sm">
                 <div class="rounded-full border border-gray-300 px-3 py-1.5">
@@ -65,20 +65,22 @@
                 </div>
               </div>
             </div>
-            <div class="py-2 border-gray-200 border-y">
-              <div class="mb-2 font-semibold">Stay for a ... ?</div>
-              <div class="flex items-center justify-between gap-4 text-sm">
-                <div class="rounded-full border border-gray-300 px-3 py-1.5">
-                  Weekend
-                </div>
-                <div
-                  class="rounded-full border-2 border-gray-900 bg-gray-200 px-3 py-1.5"
+            <div class="pt-3 mt-3 border-t border-gray-200">
+              <div class="mb-2 font-semibold">Go anytime</div>
+              <div
+                class="flex gap-2 px-6 -mx-6 overflow-x-scroll no-scrollbar flex-nowrap"
+              >
+                <button
+                  v-for="month of months"
+                  :key="month"
+                  class="w-[114px] flex-none rounded-2xl border border-gray-300 py-2 text-center"
                 >
-                  Week
-                </div>
-                <div class="rounded-full border border-gray-300 px-3 py-1.5">
-                  Month
-                </div>
+                  <Calendar />
+                  <div class="mt-1 text-sm font-medium">
+                    {{ month }}
+                    <div>2025</div>
+                  </div>
+                </button>
               </div>
             </div>
           </div>
@@ -102,5 +104,21 @@
 import MagnifyingGlass from '@/components/icons/magnifying-glass.vue';
 import XMark from '@/components/icons/x-mark.vue';
 import WhereTrip from '@/components/search-modal/where-trip.vue';
+import Calendar from '@/components/icons/calendar.vue';
 defineEmits(['close']);
+
+const months = [
+  'January',
+  'Febraury',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 </script>
