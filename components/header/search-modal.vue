@@ -50,19 +50,26 @@
           <!-- Flexible -->
           <div class="">
             <div class="pt-3 border-t border-gray-200">
-              <div class="mb-2 font-semibold">Stay for a ... ?</div>
+              <div class="mb-2 font-semibold">Stay for a {{ stayForA }} ?</div>
               <div class="flex items-center justify-between gap-4 text-sm">
-                <div class="rounded-full border border-gray-300 px-3 py-1.5">
+                <button
+                  class="rounded-full border border-gray-300 px-3 py-1.5"
+                  @click="stayForA = 'weekend'"
+                >
                   Weekend
-                </div>
-                <div
+                </button>
+                <button
                   class="rounded-full border-2 border-gray-900 bg-gray-200 px-3 py-1.5"
+                  @click="stayForA = 'week'"
                 >
                   Week
-                </div>
-                <div class="rounded-full border border-gray-300 px-3 py-1.5">
+                </button>
+                <button
+                  class="rounded-full border border-gray-300 px-3 py-1.5"
+                  @click="stayForA = 'month'"
+                >
                   Month
-                </div>
+                </button>
               </div>
             </div>
             <div class="pt-3 mt-3 border-t border-gray-200">
@@ -106,6 +113,8 @@ import XMark from '@/components/icons/x-mark.vue';
 import WhereTrip from '@/components/search-modal/where-trip.vue';
 import Calendar from '@/components/icons/calendar.vue';
 defineEmits(['close']);
+
+const stayForA = ref<string>('...');
 
 const months = [
   'January',
