@@ -22,18 +22,8 @@
     </div>
 
     <div class="flex flex-col flex-grow gap-2 px-3">
-      <details>
-        <summary>
-          <div class="search-card__collapse">Where to?</div>
-        </summary>
-        <WhereTrip />
-      </details>
-      <details>
-        <summary>
-          <div class="search-card__collapse">When's your trip?</div>
-        </summary>
-        <WhenTrip />
-      </details>
+      <WhereTrip />
+      <WhenTrip />
     </div>
 
     <div class="flex items-center justify-between px-6 py-2 bg-white">
@@ -62,9 +52,9 @@ details > summary {
   list-style: none;
 }
 
-details[open] > summary {
+/* details[open] > summary {
   display: none;
-}
+} */
 
 details > summary::-webkit-details-marker {
   display: none;

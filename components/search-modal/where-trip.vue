@@ -1,6 +1,6 @@
 <template>
-  <div class="overflow-hidden search-card">
-    <div class="mb-4 text-xl font-extrabold">Where to?</div>
+  <details class="overflow-hidden search-card">
+    <summary class="text-xl font-extrabold">Where to?</summary>
     <div
       class="flex items-center gap-2 p-4 my-4 text-sm font-medium border border-gray-400 rounded-xl text-airbnb-gray-light"
     >
@@ -22,7 +22,7 @@
         </button>
       </div>
     </div>
-  </div>
+  </details>
 </template>
 
 <script setup lang="ts">

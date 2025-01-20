@@ -1,6 +1,6 @@
 <template>
-  <div class="search-card">
-    <div class="text-xl font-extrabold">When's your trip?</div>
+  <details class="overflow-hidden search-card">
+    <summary class="text-xl font-extrabold">When's your trip?</summary>
     <!-- Tab selector -->
     <div
       class="grid items-center grid-cols-3 p-1 my-4 text-sm font-bold text-center bg-gray-200 rounded-full"
@@ -75,7 +75,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </details>
 </template>
 
 <script setup lang="ts">
