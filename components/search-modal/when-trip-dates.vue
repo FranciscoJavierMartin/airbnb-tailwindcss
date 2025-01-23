@@ -1,28 +1,36 @@
 <template>
-  <div ref="wrapper" class="input-range--circular">
-    <output
-      ref="output"
-      class="input-range--circular-output"
-      tabindex="0"
-      @keydown.prevent="updateValue"
-      @pointermove="movePointer"
-    ></output>
-    <input
-      ref="input-range"
-      type="range"
-      class="input-range"
-      min="1"
-      max="12"
-      step="1"
-      data-range="circular"
-      hidden
-      v-model="value"
-    />
+  <div class="relative ml-[19px] w-full">
+    <div
+      class="absolute bottom-[85px] left-[35px] right-[60px] top-[60px] z-10 flex flex-col items-center justify-center text-center"
+    >
+      <div class="font-bold text-8xl">{{ value }}</div>
+      <div class="-mt-2 text-xl font-bold">{{ monthText }}</div>
+    </div>
+    <div ref="wrapper" class="input-range--circular">
+      <output
+        ref="output"
+        class="input-range--circular-output"
+        tabindex="0"
+        @keydown.prevent="updateValue"
+        @pointermove="movePointer"
+      />
+      <input
+        ref="input-range"
+        type="range"
+        class="input-range"
+        min="1"
+        max="12"
+        step="1"
+        data-range="circular"
+        hidden
+        v-model="value"
+      />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, useTemplateRef, reactive } from 'vue';
+import { ref, useTemplateRef, reactive, computed } from 'vue';
 
 type Settings = {
   offset: number;
@@ -40,6 +48,9 @@ const wrapperElement = useTemplateRef<HTMLDivElement>('wrapper');
 const settings: Settings & DOMStringMap = defaultSettings as any;
 const center = reactive<{ x: number; y: number }>({ x: 0, y: 0 });
 const value = ref<number>(3);
+const monthText = computed<string>(() =>
+  value.value > 1 ? 'months' : 'month',
+);
 
 function stringToType(obj: DOMStringMap): DOMStringMap {
   const object = Object.assign({}, obj);
@@ -90,6 +101,7 @@ function updateCircle(start: number = 0): void {
   }
 
   wrapperElement.value!.dataset.value = inputRangeElement.value?.value;
+  value.value = parseInt(inputRangeElement.value!.value, 10);
   wrapperElement.value?.style.setProperty('--angle', `${angle}deg`);
   wrapperElement.value?.style.setProperty('--gradient-end', `${end}deg`);
 }
@@ -242,7 +254,6 @@ CIRCULAR
   border-radius: 50%;
   display: inline-block;
   height: var(--circle-size);
-  margin: 0.25rem;
   position: relative;
   touch-action: none;
   width: var(--circle-size);
@@ -253,7 +264,8 @@ CIRCULAR
     background-color: var(--circle-bgc);
     border-radius: 50%;
     text-align: center;
-    content: attr(data-value) '\A' 'months';
+    /* content: attr(data-value) '\A' 'months'; */
+    content: '';
     font-weight: 700;
     font-size: 2rem;
     line-height: 1;
