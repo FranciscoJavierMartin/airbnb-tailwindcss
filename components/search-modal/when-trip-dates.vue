@@ -102,13 +102,11 @@ function updateValue(event: KeyboardEvent): void {
   switch (event.key) {
     case 'ArrowLeft':
     case 'ArrowDown':
-      event.preventDefault();
       inputRangeElement.value?.stepDown();
       updateCircle();
       break;
     case 'ArrowRight':
     case 'ArrowUp':
-      event.preventDefault();
       inputRangeElement.value?.stepUp();
       updateCircle();
       break;
@@ -251,6 +249,22 @@ CIRCULAR
   --circle-size: 200px;
   --track-bgc: hsl(219, 20%, 85%);
   --track-fill: cornflowerblue;
+  /* --track-fill: linear-gradient(
+    to right,
+    red,
+    #ff8000,
+    #ff0,
+    #80ff00,
+    lime,
+    #00ff80,
+    cyan,
+    #007fff,
+    blue,
+    #7f00ff,
+    #f0f,
+    #ff0080,
+    red
+  ); */
   --thumb-size: 30px;
   --gradient-start: 0deg;
   --gradient-end: 0deg;
