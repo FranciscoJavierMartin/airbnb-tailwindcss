@@ -142,7 +142,6 @@ onMounted(() => {
   --rng-label-off: 0.25rem;
   --rng-thumb-bdrs: 50%;
   --rng-thumb-bxsh: none;
-  --rng-thumb-bxsh--focus: inset 0 0 0 0.25rem var(--rng-focus);
   --rng-thumb-bgc: #0960a5;
   --rng-thumb-h: 2rem;
   --rng-thumb-w: 2rem;
@@ -179,10 +178,6 @@ onMounted(() => {
     position: relative;
     width: var(--rng-thumb-w);
     z-index: var(--rng-thumb-z);
-  }
-
-  &:focus::-webkit-slider-thumb {
-    box-shadow: var(--rng-thumb-bxsh--focus);
   }
 
   /* 
@@ -347,11 +342,6 @@ CIRCULAR
     border-radius: 50%;
     box-shadow: var(--thumb-bxsh, none);
     box-sizing: border-box;
-  }
-
-  &:focus {
-    --thumb-bxsh: inset 0 0 0 2px #fff, inset 0 0 0 10px var(--track-fill);
-    outline: none;
   }
 }
 </style>
