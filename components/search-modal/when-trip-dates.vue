@@ -15,7 +15,6 @@
       max="12"
       step="1"
       data-range="circular"
-      data-ticks="12"
       hidden
       v-model="value"
     />
@@ -193,14 +192,7 @@ onMounted(() => {
   TRACK
   =====
   */
-  &::-moz-range-track {
-    background: transparent;
-    background-size: 100%;
-    border-radius: var(--rng-bdrs);
-    box-sizing: border-box;
-    height: var(--rng-h);
-  }
-
+  &::-moz-range-track,
   &::-webkit-slider-runnable-track {
     background: transparent;
     background-size: 100%;
@@ -332,6 +324,7 @@ CIRCULAR
     right: 0;
     width: var(--thumb-size);
   }
+
   &:focus {
     --thumb-bxsh: inset 0 0 0 2px #fff, inset 0 0 0 10px var(--track-fill);
     outline: none;
