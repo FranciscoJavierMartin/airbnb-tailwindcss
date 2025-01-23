@@ -31,7 +31,8 @@
     <!-- Tabs -->
     <div>
       <!-- Dates -->
-      <div v-if="tabSelected === 0"></div>
+
+      <WhenTripDates v-if="tabSelected === 0" />
 
       <!-- Months -->
       <WhenTripMonths v-if="tabSelected === 1" />
@@ -43,6 +44,7 @@
 </template>
 
 <script setup lang="ts">
+import WhenTripDates from './when-trip-dates.vue';
 import WhenTripFlexible from './when-trip-flexible.vue';
 import WhenTripMonths from './when-trip-months.vue';
 const tabSelected = ref<number>(0);
