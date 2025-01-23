@@ -1,5 +1,5 @@
 <template>
-  <div ref="wrapper" class="input-range--circular input-range__wrapper">
+  <div ref="wrapper" class="input-range--circular">
     <output
       ref="output"
       class="input-range--circular-output"
@@ -215,24 +215,6 @@ onMounted(() => {
     z-index: -1;
   }
 }
-/* 
-=======
-WRAPPER
-=======
-*/
-.input-range__wrapper {
-  flex: 1;
-  height: 4rem; /* TODO */
-  margin-bottom: 1rem;
-  position: relative;
-
-  .input-range {
-    bottom: 1rem;
-    left: 0;
-    margin: 0;
-    position: absolute;
-  }
-}
 
 /*
 ========
@@ -264,6 +246,7 @@ CIRCULAR
   position: relative;
   touch-action: none;
   width: var(--circle-size);
+  flex: 1;
 
   &::before {
     align-items: center;
