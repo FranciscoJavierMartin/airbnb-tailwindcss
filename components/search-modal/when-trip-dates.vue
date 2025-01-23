@@ -246,30 +246,12 @@ CIRCULAR
 */
 .input-range--circular {
   --circle-bgc: #fff;
-  --circle-size: 200px;
+  --circle-size: 290px;
   /* --track-bgc: hsl(219, 20%, 85%); */
   --track-bgc: #e6e6e6;
   /* --track-fill: cornflowerblue; */
-  /* --track-fill: #ff385c; */
   --track-fill: #ff0080;
-
-  /* --track-fill: linear-gradient(
-    to right,
-    red,
-    #ff8000,
-    #ff0,
-    #80ff00,
-    lime,
-    #00ff80,
-    cyan,
-    #007fff,
-    blue,
-    #7f00ff,
-    #f0f,
-    #ff0080,
-    red
-  ); */
-  --thumb-size: 30px;
+  --thumb-size: 60px;
   --gradient-start: 0deg;
   --gradient-end: 0deg;
 
