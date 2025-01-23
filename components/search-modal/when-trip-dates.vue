@@ -317,8 +317,12 @@ CIRCULAR
   z-index: 1;
 
   &::before {
-    background-color: var(--thumb-bgc, #fff);
-    border: var(--thumb-bdw, 2px) solid var(--track-fill);
+    border: 5px solid var(--track-fill);
+    background-color: #e9e9e9;
+    box-shadow:
+      0 2px 2px rgba(225, 0, 35, 0.5),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.35),
+      inset 0 2px 2px #ffffff;
     border-radius: 50%;
     box-shadow: var(--thumb-bxsh, none);
     box-sizing: border-box;
@@ -329,6 +333,21 @@ CIRCULAR
     position: absolute;
     right: 0;
     width: var(--thumb-size);
+  }
+
+  &::after {
+    content: '';
+    cursor: grab;
+    background: linear-gradient(180deg, #d5d5d5 0%, #ffffff 83.75%);
+    display: inline-block;
+    position: absolute;
+    right: 7px;
+    width: calc(var(--thumb-size) - 15px);
+    height: calc(var(--thumb-size) - 15px);
+    border-radius: 50%;
+    box-shadow: var(--thumb-bxsh, none);
+    box-sizing: border-box;
+    top: 7px;
   }
 
   &:focus {
