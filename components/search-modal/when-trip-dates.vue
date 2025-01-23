@@ -341,13 +341,13 @@ CIRCULAR
     background: linear-gradient(180deg, #d5d5d5 0%, #ffffff 83.75%);
     display: inline-block;
     position: absolute;
-    right: 7px;
-    width: calc(var(--thumb-size) - 15px);
-    height: calc(var(--thumb-size) - 15px);
+    right: 10px;
+    top: 10px;
+    width: calc(var(--thumb-size) - 20px);
+    height: calc(var(--thumb-size) - 20px);
     border-radius: 50%;
     box-shadow: var(--thumb-bxsh, none);
     box-sizing: border-box;
-    top: 7px;
   }
 
   &:focus {
