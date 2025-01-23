@@ -249,7 +249,10 @@ CIRCULAR
   --circle-size: 200px;
   /* --track-bgc: hsl(219, 20%, 85%); */
   --track-bgc: #e6e6e6;
-  --track-fill: cornflowerblue;
+  /* --track-fill: cornflowerblue; */
+  /* --track-fill: #ff385c; */
+  --track-fill: #ff0080;
+
   /* --track-fill: linear-gradient(
     to right,
     red,
@@ -310,12 +313,12 @@ CIRCULAR
 
   &::after {
     background-color: var(--track-fill);
-    border-radius: 50%;
+    border-radius: 30px;
     content: '';
     height: var(--thumb-size);
     position: absolute;
-    left: calc(50% - (var(--thumb-size) / 2));
-    width: var(--thumb-size);
+    left: calc(50% - 5px);
+    width: 10px;
   }
 }
 
