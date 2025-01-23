@@ -31,7 +31,6 @@
     <!-- Tabs -->
     <div>
       <!-- Dates -->
-
       <WhenTripDates v-if="tabSelected === 0" />
 
       <!-- Months -->
