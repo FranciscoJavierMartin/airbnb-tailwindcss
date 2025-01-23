@@ -291,6 +291,12 @@ CIRCULAR
     position: absolute;
     top: var(--thumb-size);
     width: calc(var(--circle-size) - (var(--thumb-size) * 2));
+    box-shadow:
+      0 -5px 5px rgba(255, 255, 255, 0.4),
+      inset 0 5px 3px rgba(255, 255, 255, 0.8),
+      inset 0 -5px 5px rgba(0, 0, 0, 0.2),
+      0 11px 18px rgba(0, 0, 0, 0.18),
+      0 -20px 30px rgba(255, 255, 255, 0.8);
   }
 
   &::after {
