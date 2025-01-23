@@ -247,21 +247,13 @@ CIRCULAR
 .input-range--circular {
   --circle-bgc: #fff;
   --circle-size: 290px;
-  /* --track-bgc: hsl(219, 20%, 85%); */
   --track-bgc: #e6e6e6;
-  /* --track-fill: cornflowerblue; */
   --track-fill: #ff0080;
   --thumb-size: 60px;
   --gradient-start: 0deg;
   --gradient-end: 0deg;
 
-  /* box-shadow:
-    0 -5px 5px rgba(0, 0, 0, 0.2),
-    0 5px 5px #ffffff,
-    inset 0 -20px 30px #ffffffe5,
-    inset 0 10px 20px rgba(0, 0, 0, 0.2); */
-
-  background-image: conic-gradient(
+  background: conic-gradient(
     var(--track-bgc) 0,
     var(--track-bgc) var(--gradient-start),
     var(--track-fill) var(--gradient-start),
@@ -269,6 +261,7 @@ CIRCULAR
     var(--track-bgc) var(--gradient-end),
     var(--track-bgc)
   );
+
   border-radius: 50%;
   display: inline-block;
   height: var(--circle-size);
@@ -296,7 +289,7 @@ CIRCULAR
       inset 0 5px 3px rgba(255, 255, 255, 0.8),
       inset 0 -5px 5px rgba(0, 0, 0, 0.2),
       0 11px 18px rgba(0, 0, 0, 0.18);
-      /* 0 -20px 30px rgba(255, 255, 255, 0.8); */
+    /* 0 -20px 30px rgba(255, 255, 255, 0.8); */
   }
 
   &::after {
