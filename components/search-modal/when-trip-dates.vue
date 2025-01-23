@@ -260,7 +260,6 @@ CIRCULAR
   --track-bgc: hsl(219, 20%, 85%);
   --track-fill: cornflowerblue;
   --thumb-size: 30px;
-
   --gradient-start: 0deg;
   --gradient-end: 0deg;
 
@@ -279,31 +278,34 @@ CIRCULAR
   position: relative;
   touch-action: none;
   width: var(--circle-size);
+
+  &::before {
+    align-items: center;
+    background-color: var(--circle-bgc);
+    border-radius: 50%;
+    content: attr(data-value);
+    display: flex;
+    font-family: ui-sans-serif, ui-system, sans-serif;
+    font-size: 2rem;
+    height: calc(var(--circle-size) - (var(--thumb-size) * 2));
+    justify-content: center;
+    left: var(--thumb-size);
+    position: absolute;
+    top: var(--thumb-size);
+    width: calc(var(--circle-size) - (var(--thumb-size) * 2));
+  }
+
+  &::after {
+    background-color: var(--track-fill);
+    border-radius: 50%;
+    content: '';
+    height: var(--thumb-size);
+    position: absolute;
+    left: calc(50% - (var(--thumb-size) / 2));
+    width: var(--thumb-size);
+  }
 }
-.input-range--circular::before {
-  align-items: center;
-  background-color: var(--circle-bgc);
-  border-radius: 50%;
-  content: attr(data-value);
-  display: flex;
-  font-family: ui-sans-serif, ui-system, sans-serif;
-  font-size: 2rem;
-  height: calc(var(--circle-size) - (var(--thumb-size) * 2));
-  justify-content: center;
-  left: var(--thumb-size);
-  position: absolute;
-  top: var(--thumb-size);
-  width: calc(var(--circle-size) - (var(--thumb-size) * 2));
-}
-.input-range--circular::after {
-  background-color: var(--track-fill);
-  border-radius: 50%;
-  content: '';
-  height: var(--thumb-size);
-  position: absolute;
-  left: calc(50% - (var(--thumb-size) / 2));
-  width: var(--thumb-size);
-}
+
 .input-range--circular-output {
   background: transparent;
   position: absolute;
@@ -315,23 +317,24 @@ CIRCULAR
   transform-origin: center left;
   width: 50%;
   z-index: 1;
-}
-.input-range--circular-output::before {
-  background-color: var(--thumb-bgc, #fff);
-  border: var(--thumb-bdw, 2px) solid var(--track-fill);
-  border-radius: 50%;
-  box-shadow: var(--thumb-bxsh, none);
-  box-sizing: border-box;
-  content: '';
-  cursor: grab;
-  display: inline-block;
-  height: var(--thumb-size);
-  position: absolute;
-  right: 0;
-  width: var(--thumb-size);
-}
-.input-range--circular-output:focus {
-  --thumb-bxsh: inset 0 0 0 2px #fff, inset 0 0 0 10px var(--track-fill);
-  outline: none;
+
+  &::before {
+    background-color: var(--thumb-bgc, #fff);
+    border: var(--thumb-bdw, 2px) solid var(--track-fill);
+    border-radius: 50%;
+    box-shadow: var(--thumb-bxsh, none);
+    box-sizing: border-box;
+    content: '';
+    cursor: grab;
+    display: inline-block;
+    height: var(--thumb-size);
+    position: absolute;
+    right: 0;
+    width: var(--thumb-size);
+  }
+  &:focus {
+    --thumb-bxsh: inset 0 0 0 2px #fff, inset 0 0 0 10px var(--track-fill);
+    outline: none;
+  }
 }
 </style>
