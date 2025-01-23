@@ -269,10 +269,13 @@ CIRCULAR
     align-items: center;
     background-color: var(--circle-bgc);
     border-radius: 50%;
-    content: attr(data-value);
-    display: flex;
-    font-family: ui-sans-serif, ui-system, sans-serif;
+    text-align: center;
+    content: attr(data-value) '\A' 'months';
+    font-weight: 700;
     font-size: 2rem;
+    line-height: 1;
+    white-space: pre-wrap;
+    display: flex;
     height: calc(var(--circle-size) - (var(--thumb-size) * 2));
     justify-content: center;
     left: var(--thumb-size);
