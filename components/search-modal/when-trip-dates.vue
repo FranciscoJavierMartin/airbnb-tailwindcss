@@ -1,30 +1,30 @@
 <template>
-  <div class="relative ml-[19px] w-full">
-    <div
-      class="absolute bottom-[85px] left-[35px] right-[60px] top-[60px] z-10 flex flex-col items-center justify-center text-center"
-    >
-      <div class="font-bold text-8xl">{{ value }}</div>
-      <div class="-mt-2 text-xl font-bold">{{ monthText }}</div>
-    </div>
-    <div ref="wrapper" class="input-range--circular">
-      <output
-        ref="output"
-        class="input-range--circular-output"
-        tabindex="0"
-        @keydown.prevent="updateValue"
-        @pointermove="movePointer"
-      />
-      <input
-        ref="input-range"
-        type="range"
-        class="input-range"
-        min="1"
-        max="12"
-        step="1"
-        data-range="circular"
-        hidden
-        v-model="value"
-      />
+  <div class="flex justify-center w-full">
+    <div class="relative">
+      <div ref="wrapper" class="input-range--circular">
+        <div class="input-range__text">
+          <div class="font-bold text-8xl">{{ value }}</div>
+          <div class="-mt-2 text-xl font-bold">{{ monthText }}</div>
+        </div>
+        <output
+          ref="output"
+          class="input-range--circular-output"
+          tabindex="0"
+          @keydown.prevent="updateValue"
+          @pointermove="movePointer"
+        />
+        <input
+          ref="input-range"
+          type="range"
+          class="input-range"
+          min="1"
+          max="12"
+          step="1"
+          data-range="circular"
+          hidden
+          v-model="value"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -226,6 +226,19 @@ onMounted(() => {
     top: calc(var(--rng-h) + var(--rng-label-off));
     z-index: -1;
   }
+}
+
+.input-range__text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: calc(var(--circle-size) / 2 - 116px);
+  bottom: calc(var(--circle-size) / 2 - 116px);
+  left: calc(var(--circle-size) / 2 - 116px);
+  right: calc(var(--circle-size) / 2 - 116px);
 }
 
 /*
