@@ -160,15 +160,12 @@ onMounted(() => {
   --rng-thumb-z: 1;
 
   border-radius: var(--rng-bdrs);
-  box-sizing: border-box;
-  font-family: inherit;
   height: var(--rng-h);
   margin: var(--rng-m);
   outline: none;
-  position: relative;
   width: var(--rng-w);
-  -webkit-appearance: none;
-  appearance: none;
+
+  @apply relative box-border appearance-none;
 
   /* 
   =====
@@ -229,12 +226,7 @@ onMounted(() => {
 }
 
 .input-range__text {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
+  @apply absolute flex flex-col items-center justify-center text-center;
   top: calc(var(--circle-size) / 2 - 116px);
   bottom: calc(var(--circle-size) / 2 - 116px);
   left: calc(var(--circle-size) / 2 - 116px);
@@ -263,31 +255,18 @@ CIRCULAR
     var(--track-bgc) var(--gradient-end),
     var(--track-bgc)
   );
-
-  border-radius: 50%;
-  display: inline-block;
   height: var(--circle-size);
-  position: relative;
-  touch-action: none;
   width: var(--circle-size);
-  flex: 1;
+
+  @apply relative inline-block flex-[1] touch-none rounded-full;
 
   &::before {
-    align-items: center;
     background-color: var(--circle-bgc);
-    border-radius: 50%;
-    text-align: center;
     /* content: attr(data-value) '\A' 'months'; */
     content: '';
-    font-weight: 700;
-    font-size: 2rem;
     line-height: 1;
-    white-space: pre-wrap;
-    display: flex;
     height: calc(var(--circle-size) - (var(--thumb-size) * 2));
-    justify-content: center;
     left: var(--thumb-size);
-    position: absolute;
     top: var(--thumb-size);
     width: calc(var(--circle-size) - (var(--thumb-size) * 2));
     box-shadow:
@@ -296,63 +275,50 @@ CIRCULAR
       inset 0 -5px 5px rgba(0, 0, 0, 0.2),
       0 11px 18px rgba(0, 0, 0, 0.18);
     /* 0 -20px 30px rgba(255, 255, 255, 0.8); */
+
+    @apply absolute flex items-center justify-center whitespace-pre-wrap rounded-full text-center text-[2rem] font-bold;
   }
 
   &::after {
     background-color: var(--track-fill);
-    border-radius: 30px;
     content: '';
     height: var(--thumb-size);
-    position: absolute;
     left: calc(50% - 5px);
-    width: 10px;
+
+    @apply absolute w-[10px] rounded-[30px];
   }
 }
 
 .input-range--circular-output {
-  background: transparent;
-  position: absolute;
-  top: 50%;
-  left: 50%;
   height: var(--thumb-size);
   margin-top: calc(var(--thumb-size) / -2);
   transform: rotate(var(--angle));
   transform-origin: center left;
-  width: 50%;
-  z-index: 1;
+
+  @apply absolute left-1/2 top-1/2 z-[1] w-1/2 bg-transparent;
 
   &::before {
     border: 5px solid var(--track-fill);
-    background-color: #e9e9e9;
     box-shadow:
       0 2px 2px rgba(225, 0, 35, 0.5),
       inset 0 -1px 2px rgba(0, 0, 0, 0.35),
       inset 0 2px 2px #ffffff;
-    border-radius: 50%;
     box-shadow: var(--thumb-bxsh, none);
-    box-sizing: border-box;
     content: '';
-    cursor: grab;
-    display: inline-block;
     height: var(--thumb-size);
-    position: absolute;
-    right: 0;
     width: var(--thumb-size);
+
+    @apply absolute right-0 box-border inline-block cursor-grab rounded-full bg-[#e9e9e9];
   }
 
   &::after {
     content: '';
-    cursor: grab;
     background: linear-gradient(180deg, #d5d5d5 0%, #ffffff 83.75%);
-    display: inline-block;
-    position: absolute;
-    right: 10px;
-    top: 10px;
     width: calc(var(--thumb-size) - 20px);
     height: calc(var(--thumb-size) - 20px);
-    border-radius: 50%;
     box-shadow: var(--thumb-bxsh, none);
-    box-sizing: border-box;
+
+    @apply absolute right-[10px] top-[10px] box-border inline-block cursor-grab rounded-full;
   }
 }
 </style>
