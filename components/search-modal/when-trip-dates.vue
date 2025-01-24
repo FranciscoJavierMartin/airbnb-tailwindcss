@@ -1,6 +1,6 @@
 <template>
-  <div class="flex justify-center w-full">
-    <div class="relative">
+  <div class="">
+    <div class="relative flex aspect-[1] max-h-[290px] min-h-[230px] mx-auto w-full min-w-[230px] max-w-[290px] flex-shrink-0 flex-grow-0 rounded-full">
       <div ref="wrapper" class="input-range--circular">
         <div class="input-range__text">
           <div class="font-bold text-8xl">{{ value }}</div>
