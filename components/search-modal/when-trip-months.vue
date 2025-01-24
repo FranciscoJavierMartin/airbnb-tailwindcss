@@ -5,14 +5,14 @@
     >
       <div ref="wrapper" class="input-range--circular">
         <div class="input-range__text">
-          <div class="font-bold text-8xl">{{ value }}</div>
+          <div class="font-bold text-8xl">{{ months }}</div>
           <div class="-mt-2 text-xl font-bold">{{ monthText }}</div>
         </div>
         <output
           ref="output"
           class="input-range--circular-output"
           tabindex="0"
-          @keydown.prevent="updateValue"
+          @keydown.prevent="updateMonth"
           @pointermove="movePointer"
         />
         <input
@@ -24,13 +24,23 @@
           step="1"
           data-range="circular"
           hidden
-          v-model="value"
+          v-model="months"
         />
       </div>
     </div>
-    <div class="mt-4 text-sm text-center">
-      From January 1st, 2025 to December 31st, 2025 &middot;
-      <a href="#">Edit</a>
+    <div class="mt-4 text-center text-airbnb-gray-dark">
+      <a
+        href="#"
+        class="font-medium text-primary underline underline-offset-[6px]"
+      >
+        {{ startDate }}
+      </a>
+      to
+      <a
+        href="#"
+        class="font-medium text-primary underline underline-offset-[6px]"
+        >{{ endDate }}
+      </a>
     </div>
   </div>
 </template>
@@ -53,10 +63,54 @@ const outputElement = useTemplateRef<HTMLOutputElement>('output');
 const wrapperElement = useTemplateRef<HTMLDivElement>('wrapper');
 const settings: Settings & DOMStringMap = defaultSettings as any;
 const center = reactive<{ x: number; y: number }>({ x: 0, y: 0 });
-const value = ref<number>(3);
+const months = ref<number>(3);
 const monthText = computed<string>(() =>
-  value.value > 1 ? 'months' : 'month',
+  months.value > 1 ? 'months' : 'month',
 );
+const startDate = computed<string>(() => {
+  return getDateString(getDate(1));
+});
+const endDate = computed<string>(() => {
+  return getDateString(getDate(months.value));
+});
+
+function getDate(nextMonthOffset: number): Date {
+  const date = new Date();
+  let nextMonth: number = date.getMonth();
+  date.setDate(1);
+
+  let fullYear: number = date.getFullYear();
+
+  if (nextMonth > 11) {
+    nextMonth = 0;
+    fullYear += 1;
+  }
+
+  date.setMonth(nextMonth + nextMonthOffset);
+  date.setFullYear(fullYear);
+
+  return date;
+}
+
+function getDateString(date: Date): string {
+  const dayOfWeel = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  const month = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+
+  return `${dayOfWeel[date.getDay()]}, ${month[date.getMonth()]} ${date.getDate()}`;
+}
 
 function stringToType(obj: DOMStringMap): DOMStringMap {
   const object = Object.assign({}, obj);
@@ -107,7 +161,7 @@ function updateCircle(start: number = 0): void {
   }
 
   wrapperElement.value!.dataset.value = inputRangeElement.value?.value;
-  value.value = parseInt(inputRangeElement.value!.value, 10);
+  months.value = parseInt(inputRangeElement.value!.value, 10);
   wrapperElement.value?.style.setProperty('--angle', `${angle}deg`);
   wrapperElement.value?.style.setProperty('--gradient-end', `${end}deg`);
 }
@@ -116,7 +170,7 @@ function movePointer(event: PointerEvent): void {
   updateCircle(rotate(event.pageX, event.pageY));
 }
 
-function updateValue(event: KeyboardEvent): void {
+function updateMonth(event: KeyboardEvent): void {
   switch (event.key) {
     case 'ArrowLeft':
     case 'ArrowDown':
