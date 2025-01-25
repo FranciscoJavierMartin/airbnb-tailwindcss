@@ -11,7 +11,8 @@
     </ul>
   </div>
   <hr class="-mx-6" />
-  <div class="h-[400px] overflow-y-scroll no-scrollbar">
+  <div v-html="calendarHtml" class="w-[300px] text-center overflow-y-scroll"></div>
+  <!--<div class="h-[400px] overflow-y-scroll no-scrollbar">
     <div>
       <div class="py-4">
         <div class="font-semibold">January 2025</div>
@@ -170,11 +171,76 @@
         </table>
       </div>
     </div>
-  </div>
-  <div class="flex gap-2 pl-6 -mx-6 overflow-x-scroll flex-nowrap no-scrollbar"></div>
+  </div>-->
+  <div
+    class="flex gap-2 pl-6 -mx-6 overflow-x-scroll no-scrollbar flex-nowrap"
+  ></div>
 </template>
 
+<script setup lang="ts">
+const currentYear: number = new Date().getFullYear();
+const locale = 'en';
+
+const intlForMonths = new Intl.DateTimeFormat(locale, { month: 'long' });
+const months = [...Array(12).keys()];
+
+const intlForWeeks = new Intl.DateTimeFormat(locale, { weekday: 'short' });
+const weekDays = [...Array(7).keys()].map((dayIndex) =>
+  intlForWeeks.format(new Date(currentYear, 2, dayIndex + 1)),
+);
+
+const calendar = months.map((monthIndex) => {
+  const monthName = intlForMonths.format(new Date(currentYear, monthIndex));
+  const nextMonthIndex = (monthIndex + 1) % 12;
+  const daysOfMonth = new Date(currentYear, nextMonthIndex, 0).getDate();
+  const startsOn = new Date(currentYear, monthIndex, 1).getDay();
+
+  return {
+    daysOfMonth,
+    monthName,
+    startsOn,
+  };
+});
+
+const calendarHtml = calendar
+  .map(({ daysOfMonth, monthName, startsOn }) => {
+    const days = [...Array(daysOfMonth).keys()];
+    const firstDayAttributes = `class='first-day' style='--first-day-start: ${startsOn}'`;
+    const htmlDaysName = weekDays
+      .map((dayName) => `<li class='day-name'>${dayName}</li>`)
+      .join('');
+    const htmlDays = days
+      .map(
+        (day, index) =>
+          `<li ${index === 0 ? firstDayAttributes : ''}>${day + 1}</li>`,
+      )
+      .join('');
+    return `<h2>${monthName} ${currentYear}</h2><ol>${htmlDaysName}${htmlDays}</ol>`;
+  })
+  .join('');
+</script>
+
 <style>
+ol {
+  @apply grid list-none grid-cols-7 m-0 p-0;
+}
+
+li {
+  @apply text-[1.5ch];
+}
+
+h2 {
+  @apply mb-1 p-0;
+}
+
+.first-day {
+  grid-column-start: var(--first-day-start, 0);
+}
+
+.day-name {
+  @apply mb-0.5 bg-[#eee] p-1 text-center text-xs font-bold;
+}
+
 .search-dates-table {
   @apply border-separate;
 
