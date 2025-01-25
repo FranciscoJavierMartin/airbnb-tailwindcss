@@ -11,7 +11,33 @@
     </ul>
   </div>
   <hr class="-mx-6" />
-  <div v-html="calendarHtml" class="w-[300px] text-center overflow-y-scroll"></div>
+  <div class="h-[400px] no-scrollbar overflow-y-scroll text-center">
+    <template
+      v-for="({ daysOfMonth, monthName, startsOn }, index) of calendar"
+      :key="`${monthName}_${index}`"
+    >
+      <h2 class="p-0 mb-1">{{ monthName }} {{ currentYear }}</h2>
+      <ol class="grid grid-cols-7 p-0 m-0 list-none">
+        <li
+          v-for="dayName of weekDays"
+          :key="`${monthName}_${dayName}`"
+          class="mb-0.5 bg-[#eee] p-1 text-center text-[1.5ch] text-xs font-bold"
+        >
+          {{ dayName }}
+        </li>
+        <li
+          v-for="(day, dayIndex) of Array(daysOfMonth).keys()"
+          :key="`${monthName}_${day}_day`"
+          class="text-[1.5ch]"
+          :class="{ 'first-day': dayIndex === 0 }"
+          :style="{ '--first-day-start': startsOn }"
+        >
+          {{ day + 1 }}
+        </li>
+      </ol>
+    </template>
+  </div>
+  <!-- <div v-html="calendarHtml" class="w-[300px] text-center overflow-y-scroll"></div> -->
   <!--<div class="h-[400px] overflow-y-scroll no-scrollbar">
     <div>
       <div class="py-4">
@@ -179,7 +205,7 @@
 
 <script setup lang="ts">
 const currentYear: number = new Date().getFullYear();
-const locale = 'en';
+const locale = 'es';
 
 const intlForMonths = new Intl.DateTimeFormat(locale, { month: 'long' });
 const months = [...Array(12).keys()];
@@ -221,24 +247,8 @@ const calendarHtml = calendar
 </script>
 
 <style>
-ol {
-  @apply grid list-none grid-cols-7 m-0 p-0;
-}
-
-li {
-  @apply text-[1.5ch];
-}
-
-h2 {
-  @apply mb-1 p-0;
-}
-
 .first-day {
   grid-column-start: var(--first-day-start, 0);
-}
-
-.day-name {
-  @apply mb-0.5 bg-[#eee] p-1 text-center text-xs font-bold;
 }
 
 .search-dates-table {
