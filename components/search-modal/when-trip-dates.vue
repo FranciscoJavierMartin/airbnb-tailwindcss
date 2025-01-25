@@ -11,17 +11,20 @@
     </ul>
   </div>
   <hr class="-mx-6" />
-  <div class="h-[400px] no-scrollbar overflow-y-scroll text-center">
-    <template
+  <div class="no-scrollbar h-[400px] overflow-y-scroll text-center">
+    <div
       v-for="({ daysOfMonth, monthName, startsOn }, index) of calendar"
       :key="`${monthName}_${index}`"
+      class="py-4"
     >
-      <h2 class="p-0 mb-1">{{ monthName }} {{ currentYear }}</h2>
+      <span class="p-0 mb-1 font-semibold capitalize">
+        {{ monthName }} {{ currentYear }}
+      </span>
       <ol class="grid grid-cols-7 p-0 m-0 list-none">
         <li
           v-for="dayName of weekDays"
           :key="`${monthName}_${dayName}`"
-          class="mb-0.5 bg-[#eee] p-1 text-center text-[1.5ch] text-xs font-bold"
+          class="mb-0.5 pb-2 text-center text-[1.5ch] text-xs font-semibold capitalize text-[#717171]"
         >
           {{ dayName }}
         </li>
@@ -35,7 +38,7 @@
           {{ day + 1 }}
         </li>
       </ol>
-    </template>
+    </div>
   </div>
   <!-- <div v-html="calendarHtml" class="w-[300px] text-center overflow-y-scroll"></div> -->
   <!--<div class="h-[400px] overflow-y-scroll no-scrollbar">
