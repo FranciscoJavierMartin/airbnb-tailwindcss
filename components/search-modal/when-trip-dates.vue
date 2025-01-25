@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <!-- <div class="relative">
     <ul class="-mx-6 pb-2 text-center text-xs font-semibold text-[#717171]">
       <li class="inline-block w-[42px]">Mo</li>
       <li class="inline-block w-[42px]">Tu</li>
@@ -10,16 +10,17 @@
       <li class="inline-block w-[42px]">Su</li>
     </ul>
   </div>
-  <hr class="-mx-6" />
+  <hr class="-mx-6" /> -->
   <div class="no-scrollbar h-[400px] overflow-y-scroll text-center">
     <div
       v-for="({ daysOfMonth, monthName, startsOn }, index) of calendar"
       :key="`${monthName}_${index}`"
       class="py-4"
     >
-      <span class="p-0 mb-1 font-semibold capitalize">
+      <span class="-mx-6 mb-1 px-0 pb-1.5 font-semibold capitalize">
         {{ monthName }} {{ currentYear }}
       </span>
+      <hr class="-mx-6 py-1.5" />
       <ol class="grid grid-cols-7 p-0 m-0 list-none">
         <li
           v-for="dayName of weekDays"
@@ -203,7 +204,9 @@
   </div>-->
   <div
     class="flex gap-2 pl-6 -mx-6 overflow-x-scroll no-scrollbar flex-nowrap"
-  ></div>
+  >
+  Hello
+  </div>
 </template>
 
 <script setup lang="ts">
