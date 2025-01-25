@@ -1,16 +1,4 @@
 <template>
-  <!-- <div class="relative">
-    <ul class="-mx-6 pb-2 text-center text-xs font-semibold text-[#717171]">
-      <li class="inline-block w-[42px]">Mo</li>
-      <li class="inline-block w-[42px]">Tu</li>
-      <li class="inline-block w-[42px]">We</li>
-      <li class="inline-block w-[42px]">Th</li>
-      <li class="inline-block w-[42px]">Fr</li>
-      <li class="inline-block w-[42px]">Sa</li>
-      <li class="inline-block w-[42px]">Su</li>
-    </ul>
-  </div>
-  <hr class="-mx-6" /> -->
   <div class="no-scrollbar h-[400px] overflow-y-scroll text-center">
     <div
       v-for="({ daysOfMonth, monthName, startsOn }, index) of calendar"
@@ -41,184 +29,62 @@
       </ol>
     </div>
   </div>
-  <!-- <div v-html="calendarHtml" class="w-[300px] text-center overflow-y-scroll"></div> -->
-  <!--<div class="h-[400px] overflow-y-scroll no-scrollbar">
-    <div>
-      <div class="py-4">
-        <div class="font-semibold">January 2025</div>
-        <table class="search-dates-table">
-          <tbody>
-            <tr>
-              <td><div class="date">&nbsp;</div></td>
-              <td><div class="date">&nbsp;</div></td>
-              <td><div class="date date-disabled">1</div></td>
-              <td><div class="date date-disabled">2</div></td>
-              <td><div class="date date-disabled">3</div></td>
-              <td><div class="date date-disabled">4</div></td>
-              <td><div class="date date-disabled">5</div></td>
-            </tr>
-            <tr>
-              <td><div class="date date-disabled">6</div></td>
-              <td><div class="date date-disabled">7</div></td>
-              <td><div class="date date-disabled">8</div></td>
-              <td><div class="date date-disabled">9</div></td>
-              <td><div class="date date-disabled">10</div></td>
-              <td><div class="date date-disabled">11</div></td>
-              <td><div class="date date-disabled">12</div></td>
-            </tr>
-            <tr>
-              <td><div class="date date-disabled">13</div></td>
-              <td><div class="date date-disabled">14</div></td>
-              <td><div class="date date-disabled">15</div></td>
-              <td><div class="date">16</div></td>
-              <td><div class="date">17</div></td>
-              <td><div class="date">18</div></td>
-              <td><div class="date">19</div></td>
-            </tr>
-            <tr>
-              <td><div class="date">20</div></td>
-              <td><div class="date">21</div></td>
-              <td><div class="date">22</div></td>
-              <td><div class="date">23</div></td>
-              <td><div class="date">24</div></td>
-              <td><div class="date">25</div></td>
-              <td><div class="date">26</div></td>
-            </tr>
-            <tr>
-              <td><div class="date">27</div></td>
-              <td><div class="date">28</div></td>
-              <td><div class="date">29</div></td>
-              <td><div class="date">30</div></td>
-              <td><div class="date">31</div></td>
-              <td><div class="date">&nbsp;</div></td>
-              <td><div class="date">&nbsp;</div></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="py-4">
-        <div class="font-semibold">January 2025</div>
-        <table class="search-dates-table">
-          <tbody>
-            <tr>
-              <td><div class="date">&nbsp;</div></td>
-              <td><div class="date">&nbsp;</div></td>
-              <td><div class="date date-disabled">1</div></td>
-              <td><div class="date date-disabled">2</div></td>
-              <td><div class="date date-disabled">3</div></td>
-              <td><div class="date date-disabled">4</div></td>
-              <td><div class="date date-disabled">5</div></td>
-            </tr>
-            <tr>
-              <td><div class="date date-disabled">6</div></td>
-              <td><div class="date date-disabled">7</div></td>
-              <td><div class="date date-disabled">8</div></td>
-              <td><div class="date date-disabled">9</div></td>
-              <td><div class="date date-disabled">10</div></td>
-              <td><div class="date date-disabled">11</div></td>
-              <td><div class="date date-disabled">12</div></td>
-            </tr>
-            <tr>
-              <td><div class="date date-disabled">13</div></td>
-              <td><div class="date date-disabled">14</div></td>
-              <td><div class="date date-disabled">15</div></td>
-              <td><div class="date">16</div></td>
-              <td><div class="date">17</div></td>
-              <td><div class="date">18</div></td>
-              <td><div class="date">19</div></td>
-            </tr>
-            <tr>
-              <td><div class="date">20</div></td>
-              <td><div class="date">21</div></td>
-              <td><div class="date">22</div></td>
-              <td><div class="date">23</div></td>
-              <td><div class="date">24</div></td>
-              <td><div class="date">25</div></td>
-              <td><div class="date">26</div></td>
-            </tr>
-            <tr>
-              <td><div class="date">27</div></td>
-              <td><div class="date">28</div></td>
-              <td><div class="date">29</div></td>
-              <td><div class="date">30</div></td>
-              <td><div class="date">31</div></td>
-              <td><div class="date">&nbsp;</div></td>
-              <td><div class="date">&nbsp;</div></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="py-4">
-        <div class="font-semibold">January 2025</div>
-        <table class="search-dates-table">
-          <tbody>
-            <tr>
-              <td><div class="date">&nbsp;</div></td>
-              <td><div class="date">&nbsp;</div></td>
-              <td><div class="date date-disabled">1</div></td>
-              <td><div class="date date-disabled">2</div></td>
-              <td><div class="date date-disabled">3</div></td>
-              <td><div class="date date-disabled">4</div></td>
-              <td><div class="date date-disabled">5</div></td>
-            </tr>
-            <tr>
-              <td><div class="date date-disabled">6</div></td>
-              <td><div class="date date-disabled">7</div></td>
-              <td><div class="date date-disabled">8</div></td>
-              <td><div class="date date-disabled">9</div></td>
-              <td><div class="date date-disabled">10</div></td>
-              <td><div class="date date-disabled">11</div></td>
-              <td><div class="date date-disabled">12</div></td>
-            </tr>
-            <tr>
-              <td><div class="date date-disabled">13</div></td>
-              <td><div class="date date-disabled">14</div></td>
-              <td><div class="date date-disabled">15</div></td>
-              <td><div class="date">16</div></td>
-              <td><div class="date">17</div></td>
-              <td><div class="date">18</div></td>
-              <td><div class="date">19</div></td>
-            </tr>
-            <tr>
-              <td><div class="date">20</div></td>
-              <td><div class="date">21</div></td>
-              <td><div class="date">22</div></td>
-              <td><div class="date">23</div></td>
-              <td><div class="date">24</div></td>
-              <td><div class="date">25</div></td>
-              <td><div class="date">26</div></td>
-            </tr>
-            <tr>
-              <td><div class="date">27</div></td>
-              <td><div class="date">28</div></td>
-              <td><div class="date">29</div></td>
-              <td><div class="date">30</div></td>
-              <td><div class="date">31</div></td>
-              <td><div class="date">&nbsp;</div></td>
-              <td><div class="date">&nbsp;</div></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>-->
+  <hr class="my-3 -mx-6" />
   <div
-    class="flex gap-2 pl-6 -mx-6 overflow-x-scroll no-scrollbar flex-nowrap"
+    class="flex items-center gap-2 pl-6 -mx-6 overflow-x-scroll text-xs no-scrollbar flex-nowrap whitespace-nowrap"
   >
-  Hello
+    <div class="rounded-full border-2 border-gray-900 bg-gray-100 px-3 py-1.5">
+      Exact dates
+    </div>
+    <div
+      class="flex items-center gap-1 rounded-full border border-gray-300 px-3 py-1.5"
+    >
+      <PlusMinus />
+      1 day
+    </div>
+    <div
+      class="flex items-center gap-1 rounded-full border border-gray-300 px-3 py-1.5"
+    >
+      <PlusMinus />
+      2 days
+    </div>
+    <div
+      class="flex items-center gap-1 rounded-full border border-gray-300 px-3 py-1.5"
+    >
+      <PlusMinus />
+      3 days
+    </div>
+    <div
+      class="flex items-center gap-1 rounded-full border border-gray-300 px-3 py-1.5"
+    >
+      <PlusMinus />
+      7 days
+    </div>
+  </div>
+  <hr class="my-3 -mx-6" />
+  <div class="flex items-center justify-between py-2 bg-white">
+    <a href="#" class="font-semibold underline"> Omit </a>
+    <button
+      class="flex items-center gap-2 rounded-xl bg-[#222222] px-6 py-3 text-white"
+    >
+      Next
+    </button>
   </div>
 </template>
 
 <script setup lang="ts">
+import PlusMinus from '@/components/icons/plus-minus.vue';
+
 const currentYear: number = new Date().getFullYear();
-const locale = 'es';
+const locale = 'en';
 
 const intlForMonths = new Intl.DateTimeFormat(locale, { month: 'long' });
 const months = [...Array(12).keys()];
 
 const intlForWeeks = new Intl.DateTimeFormat(locale, { weekday: 'short' });
 const weekDays = [...Array(7).keys()].map((dayIndex) =>
-  intlForWeeks.format(new Date(currentYear, 2, dayIndex + 1)),
+  // dayIndex + 3 -> Monday is the first day of week
+  intlForWeeks.format(new Date(currentYear, 2, dayIndex + 3)),
 );
 
 const calendar = months.map((monthIndex) => {
@@ -233,23 +99,6 @@ const calendar = months.map((monthIndex) => {
     startsOn,
   };
 });
-
-const calendarHtml = calendar
-  .map(({ daysOfMonth, monthName, startsOn }) => {
-    const days = [...Array(daysOfMonth).keys()];
-    const firstDayAttributes = `class='first-day' style='--first-day-start: ${startsOn}'`;
-    const htmlDaysName = weekDays
-      .map((dayName) => `<li class='day-name'>${dayName}</li>`)
-      .join('');
-    const htmlDays = days
-      .map(
-        (day, index) =>
-          `<li ${index === 0 ? firstDayAttributes : ''}>${day + 1}</li>`,
-      )
-      .join('');
-    return `<h2>${monthName} ${currentYear}</h2><ol>${htmlDaysName}${htmlDays}</ol>`;
-  })
-  .join('');
 </script>
 
 <style>
